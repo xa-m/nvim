@@ -38,6 +38,12 @@ vim.o.relativenumber = true
 -- OPEN FILE EXPLORER
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
 
+-- Map Ctrl+d to scroll down half a page and center cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+
+-- Map Ctrl+u to scroll up half a page and center cursor
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+
 -- TABS
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
@@ -901,6 +907,12 @@ require("lazy").setup({
 		name = "rose-pine",
 		config = function()
 			-- vim.cmd("colorscheme rose-pine")
+			require("rose-pine").setup({
+				styles = {
+					comments = { italic = false }, -- Disable italics in comments
+					keywords = { italic = false }, -- Disable italics in keywords
+				},
+			})
 		end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -935,9 +947,8 @@ require("lazy").setup({
 			--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
-
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
-			--
+			-- (test)
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
